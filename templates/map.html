@@ -1,0 +1,17 @@
+<h1 style="color:blue;font-size:3em" align="center">Which map do you want to play with?</h1>
+
+<form action="/roomdes" method="post">
+    <p align="right">
+        <b style="color:green;">Room Search:</b>
+        <input type="text" name="room_search"><input type="submit" value="search">
+    </p>
+</form>
+
+<form action="/map" method="post">
+    <p style="color:green;font-size:2em" align="center">
+        <input type="radio" name="gamename" value="survivemap">Survive Map
+        <input type="radio" name="gamename" value="forestmap">Forest Map
+        <input type="submit" value="Submit">
+
+    </p>
+</form>

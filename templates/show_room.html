@@ -5,21 +5,20 @@ $def with (room)
     $room.description
 </p>
 $if room.name == "death"or room.name == "win":
-    <p><a href="/">Play Again?</a></p>
-$if room.name == "Central Corridor":
-    <p>
-        <form action="/game" method="post">
-            <P style="color:yellow;font-size:2em;">Select your action:</P>
-            <input type="radio" name = "action" value="tell a joke">Tell a Joke<br/>
-            <input type="radio" value="bite him">Bite Him<br/>
-            <input type="radio" value="run away">Run Away<br/>
-            <input type="SUBMIT" value="Submit">
-        </form>
-    </p>
+    <p style="color:green;font-size:3em" align="center"><a href="/">Play Again?</a></p>
+$elif room.name == "Central Corridor":
+    <form action="/game" method="post">
+        <P style="color:yellow;font-size:2em;">Select your action:</P>
+        <input type="radio" name = "action" value="tell a joke">Tell a Joke<br/>
+        <input type="radio" name = "action" value="bite him">Bite Him<br/>
+        <input type="radio" name = "action" value="run away">Run Away<br/>
+        <input type="SUBMIT" value="Submit">
+    </form>
 $else:
-    <p>
-        <form action="/game" method="POST">
-            <b style="color:yellow;font-size:2em;">Please input your action:</b>
-            <input type="text" name="action"> <input type="SUBMIT" value="Submit">
-        </form>
-    </p>
+    <form action="/game" method="POST">
+        <b style="color:yellow;font-size:2em;">Please input your action:</b>
+        <input type="text" name="action"> <input type="SUBMIT" value="Submit">
+    </form>
+
+<p style="color:blue;font-size:3em" align="right"><a href="/map">Return</a></p>
+

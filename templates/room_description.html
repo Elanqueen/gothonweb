@@ -1,0 +1,8 @@
+$def with (room)
+<h1 style="color:green;font-size:3em;" align="center">$room.name</h1>
+<p>$room.description</p>
+<P style="color:green;font-size:2em;">Actions you can take in this room:</P>
+$for action in room.actions:
+    <p >$action</p>
+
+<p style="color:;font-size:2em;" align="right"><a href="/map">return</a></p>
