@@ -83,8 +83,12 @@ class GameEngine(object):
             lexicon = Lexicon()
             world_list = lexicon.scan(form.action)
             sentence = parsererror.parse_sentence(world_list)
-            action = sentence.subject + " " + sentence.verb + " " + sentence.object
+            if sentence.object=="":
+                action = sentence.subject + " " + sentence.verb
+            else:
+                action = sentence.subject + " " + sentence.verb + " " + sentence.object
             print(action)
+            print(len(action))
 
             #判定action在path_list中时，才可进行页面展示，否则不跳转页面
             if action in forestmap.path_list or action in survivemap.path_list:

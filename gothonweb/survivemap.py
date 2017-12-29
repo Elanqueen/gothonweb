@@ -50,7 +50,7 @@ win = Room("win", """You survived!""")
 # ======================================list======================================
 
 path_list = ("death", "win", "Central Corridor", "Laser Weapon Armory",
-                 "The Bridge", "player type number", "player tell joke", "player run bridge")
+                 "The Bridge", "player type number", "player tell joke", "player run")
 room_list = {"Central Corridor": central_corridor, "Laser Weapon Armory": laser_weapon_armory,
                  "The Bridge": the_bridge, "death": death, "win": win}
 
@@ -61,4 +61,4 @@ generic_death = None
 START = central_corridor
 START.add_paths({"player tell joke": laser_weapon_armory})
 laser_weapon_armory.add_paths({"player type number": the_bridge})
-the_bridge.add_paths({"player run bridge": win})
+the_bridge.add_paths({"player run": win})

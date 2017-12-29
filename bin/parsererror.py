@@ -9,7 +9,7 @@ class Sentence(object):
         #remember we take ('noun','princess') tuples and convert them
         self.subject = subject[1]
         self.verb = verb[1]
-        self.object = object[1]
+        self.object = object[1] #若object为空，则会在此处存在占位符，object长度为多一位
 
 def peek(word_list):
     """获取句子的第一个word"""
@@ -63,7 +63,9 @@ def parse_object(word_list):
         return match(word_list,'noun')
     if next == 'direction':
         return match(word_list,'direction')
-    if next == None:  #此处处理，允许只有主+谓，没有宾语名词的情况
+    # 此处处理，允许只有主+谓，没有宾语名词的情况;
+    # 这种处理方式，在空值处存在占位符
+    if next == None:
         return ('noun','')
     else:   #此处是在宾语缺少名词的时候给出的错误提示信息
         raise ParserError("Expected a noun or direction next.")
@@ -92,7 +94,7 @@ def parse_sentence(word_list):
         raise ParserError("Must start with subject, object,or verb not: %s" % start)
 
 if __name__ == '__main__':
-    sentence = "climb"
+    sentence = "run"
     lexicon = Lexicon()
     world_list=lexicon.scan(sentence)
     sentence = parse_sentence(world_list)

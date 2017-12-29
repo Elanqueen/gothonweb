@@ -7,7 +7,7 @@ class Lexicon:
     direction = ['north','south','east','west','down','up','right','back']
     verb = ['climb','give','find','tell','run','type','bite','go','stop','kill','eat']
     stop=['the','in','of','from','at','it','through']
-    noun = ['ladder','pine_nuts','squirrel','key','joke','number','bridge','him','princess','cabinet']
+    noun = ['ladder','pine_nuts','squirrel','key','joke','number','bridge','princess','cabinet']
 
     def conver_number(self,s):
         try:
