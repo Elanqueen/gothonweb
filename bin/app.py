@@ -4,6 +4,8 @@ import web
 from gothonweb import map
 from gothonweb import survivemap
 from gothonweb import forestmap
+from bin.lexicon import Lexicon
+from bin import parsererror
 
 urls = (
     '/game','GameEngine',
@@ -75,9 +77,19 @@ class GameEngine(object):
 
     def POST(self):
         form = web.input(action=None)
-        if session.room and form.action in forestmap.path_list or form.action in survivemap.path_list:
-            session.room=session.room.go(form.action)
-            return render.show_room(room=session.room)
+
+        if form.action:
+            # 处理用户输入内容为关键字词组
+            lexicon = Lexicon()
+            world_list = lexicon.scan(form.action)
+            sentence = parsererror.parse_sentence(world_list)
+            action = sentence.subject + " " + sentence.verb + " " + sentence.object
+            print(action)
+
+            #判定action在path_list中时，才可进行页面展示，否则不跳转页面
+            if action in forestmap.path_list or action in survivemap.path_list:
+                session.room = session.room.go(action)
+                return render.show_room(room=session.room)
 
         web.seeother("/game")
 

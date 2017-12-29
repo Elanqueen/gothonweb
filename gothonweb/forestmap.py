@@ -37,9 +37,9 @@ generic_death = None
 
 #==================================添加room间的逻辑关系====================================
 START = forest_plane
-START.add_paths({"climb on the ladder":squirrel_room})
-squirrel_room.add_paths({"give pine nuts to the squirrel":tree_room})
-tree_room.add_paths({"find the key":win})
+START.add_paths({"player climb ladder":squirrel_room})
+squirrel_room.add_paths({"player give pine_nuts":tree_room})
+tree_room.add_paths({"player find key":win})
 
-path_list = ("death", "win", "climb on the ladder","give pine nuts to the squirrel","find the key")
+path_list = ("death", "win", "player climb ladder","player give pine_nuts","player find key")
 room_list = {"Forest Plane":forest_plane,"Squirrel Room":squirrel_room,"Tree Room":tree_room}
